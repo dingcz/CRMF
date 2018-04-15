@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping>
+    
+    	<class name="com.ithc.bean.Visit" table="sale_visit">
+			<id name="visit_id">
+				<generator class="uuid"></generator>
+			</id>
+			<property name="visit_time" length="32"></property>
+			<property name="visit_interviewee" length="32"></property>
+			<property name="visit_addr" length="128"></property>
+			<property name="visit_detail"></property>
+			<property name="visit_nexttime" length="32"></property>
+			
+			<!-- 外键 -->
+			<many-to-one name="user" class="com.ithc.bean.User" column="visit_user_id"></many-to-one>
+			<many-to-one name="customer" class="com.ithc.bean.Customer" column="visit_cust_id"></many-to-one>
+		
+			
+    	</class>
+    
+    </hibernate-mapping>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping>
+    
+    	<class name="com.ithc.bean.Customer" table="cst_customer">
+    		<id name="cust_id">
+    			<generator class="native"></generator>
+    		</id>
+    		<property name="cust_name" length="32" not-null="true"></property>
+    		<property name="cust_user_id" length="32" not-null="true"></property>
+    		<property name="cust_create_id" length="32"></property>
+    		<property name="cust_linkman" length="64"></property>
+    		<property name="cust_phone" length="64"></property>
+    		<property name="cust_mobile" length="16"></property>
+    		<property name="filePath" length="255"></property>
+    		
+    		<!-- 配置三个多对一 -->
+    		<many-to-one name="source" class="com.ithc.bean.Dict" column="cust_source" fetch="join"></many-to-one>
+    		<many-to-one name="industry" class="com.ithc.bean.Dict" column="cust_industry" fetch="join"></many-to-one>
+    		<many-to-one name="level" class="com.ithc.bean.Dict" column="cust_level" fetch="join"></many-to-one>
+    	</class>
+    
+    </hibernate-mapping>

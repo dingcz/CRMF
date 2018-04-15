@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	<struts>
+		<package name="demo" namespace="/" extends="struts-default">
+			<global-results>
+				<result name="login" type="redirect">login.jsp</result>
+			</global-results>
+			
+			<!-- 验证码 -->
+			<action name="vCode" class="com.ithc.util.Vcode" method="vCode"></action>
+			<!-- user -->
+			<action name="user_*" class="userAction" method="{1}">
+				<result name="index">index.jsp</result>
+				<result name="updatePassword">updatePassword.jsp</result>
+			</action>
+			<!-- customer -->
+			<action name="customer_*" class="customerAction" method="{1}">
+					<result name="initAddUI">jsp/customer/add.jsp</result>
+					<result name="findByPage">jsp/customer/list.jsp</result>
+			</action>
+			
+			<!-- dict -->
+			<action name="dict_*" class="dictAction" method="{1}" > 
+			</action>
+			<!-- 联系人模块 -->
+			<action name="linkman_*" class="linkmanAction" method="{1}">
+				<result name="initAddUI">jsp/linkman/add.jsp</result>
+				<result name="findByPage">jsp/linkman/list.jsp</result>
+				<result name="initUpdate">jsp/linkman/edit.jsp</result>
+				<result name="update" type="redirectAction">linkman_findByPage</result>
+			</action>
+			
+			
+			<!-- 客户拜访模块 -->
+			<action name="visit_*" class="visitAction" method="{1}">
+				<result name="initAddUI">jsp/visit/add.jsp</result>
+				<result name="findByPage">jsp/visit/list.jsp</result>
+			
+			</action>
+			
+		</package>
+	
+	</struts>
